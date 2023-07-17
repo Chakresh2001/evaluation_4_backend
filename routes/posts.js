@@ -37,14 +37,13 @@ postRoute.get("/", Authentication, async(req,res)=>{
 
     if(device){
         const post = await PostModel.find({device:device})
-        res.json({post:post})
+        return res.json({post:post})
     }
-    else{
-
+   
         const posts = await PostModel.find()
         res.json({posts:posts})
         
-    }
+  
 
    
   
