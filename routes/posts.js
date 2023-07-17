@@ -39,10 +39,13 @@ postRoute.get("/", Authentication, async(req,res)=>{
         const post = await PostModel.find({device:device})
         res.json({post:post})
     }
+    else{
 
-    const posts = await PostModel.find()
-    res.json({posts:posts})
-    
+        const posts = await PostModel.find()
+        res.json({posts:posts})
+        
+    }
+
    } catch (error) {
     res.status(400).json({error:"Internal Error"})
    }
