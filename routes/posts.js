@@ -29,26 +29,32 @@ postRoute.post("/add", Authentication, async(req,res)=>{
 
 })
 
-postRoute.get("/", Authentication, async(req,res)=>{
+postRoute.get("/get", Authentication, async(req,res)=>{
 
    
-
-    const {device} = req.query
-
-    if(device){
-        const post = await PostModel.find({device:device})
-        return res.json({post:post})
-    }
-   
+       try {
         const posts = await PostModel.find()
         res.json({posts:posts})
+       } catch (error) {
+        res.json({error:"invalid"})
+       }
         
   
+})
+postRoute.get("/get/:id", Authentication, async(req,res)=>{
 
    
-  
-    
+       try {
+        const {id} = req.params
 
+        const post  = await PostModel.findById(id)
+
+        res.json({post:post})
+
+       } catch (error) {
+        res.json({error:"invalid"})
+       }
+  
 })
 
 postRoute.patch("/update/:id", Authentication, async(req,res)=>{    
