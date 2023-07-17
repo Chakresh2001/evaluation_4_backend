@@ -31,7 +31,7 @@ postRoute.post("/add", Authentication, async(req,res)=>{
 
 postRoute.get("/", Authentication, async(req,res)=>{
 
-   try {
+   
 
     const {device} = req.query
 
@@ -46,9 +46,8 @@ postRoute.get("/", Authentication, async(req,res)=>{
         
     }
 
-   } catch (error) {
-    res.status(400).json({error:"Internal Error"})
-   }
+   
+  
     
 
 })
